@@ -55,9 +55,9 @@
          </p>
       </h:form>
       <h2>Members</h2>
-      <h:panelGroup rendered="#{empty members}">
-         <em>No registered members.</em>
-      </h:panelGroup>
+<!--      <h:panelGroup rendered="#{empty members}">-->
+<!--         <em>No registered members.</em>-->
+<!--      </h:panelGroup>-->
       <h:dataTable var="_member" value="#{members}" rendered="#{not empty members}" styleClass="simpletablestyle">
          <h:column>
             <f:facet name="header">Id</f:facet>
@@ -82,6 +82,12 @@
          <f:facet name="footer">
             REST URL for all members: <a href="#{request.contextPath}/rest/members">/rest/members</a>
          </f:facet>
+      </h:dataTable>
+
+      <h:dataTable value="#{productsGetter.getProductsDto.products}" var="product">
+         <h:column>#{product.id}</h:column>
+         <h:column>#{product.name}</h:column>
+         <h:column>#{product.proce}</h:column>
       </h:dataTable>
    </ui:define>
 </ui:composition>

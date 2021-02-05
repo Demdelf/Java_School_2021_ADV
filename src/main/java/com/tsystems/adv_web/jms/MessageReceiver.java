@@ -10,7 +10,7 @@ import javax.jms.MessageListener;
 
 @MessageDriven(name = "MessageReceiver", activationConfig = {
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-        @ActivationConfigProperty(propertyName = "destination", propertyValue = "/queue/TopProductsQueue")})
+        @ActivationConfigProperty(propertyName = "destination", propertyValue = "TopProductsQueue")})
 public class MessageReceiver implements MessageListener {
 
     @EJB
