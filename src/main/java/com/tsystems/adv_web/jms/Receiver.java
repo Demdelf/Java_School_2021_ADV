@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.inject.Inject;
 import javax.jms.JMSException;
 import javax.jms.Queue;
 import javax.jms.QueueConnection;
@@ -20,8 +21,8 @@ import javax.naming.NamingException;
 @Singleton
 public class Receiver {
 
-    @EJB
-    private MessageReceiver messageReceiver;
+//    @Inject
+//    private MessageReceiver messageReceiver;
 
     @EJB
     private ProductsGetter productsGetter;
@@ -48,7 +49,7 @@ public class Receiver {
                 QueueSession session = connection.createQueueSession(false, QueueSession.AUTO_ACKNOWLEDGE);
 
                 QueueReceiver receiver = session.createReceiver(queue);
-                receiver.setMessageListener(messageReceiver);
+                receiver.setMessageListener(new MessageReceiver(this));
 
             } catch (NamingException | JMSException e) {
                 e.printStackTrace();
