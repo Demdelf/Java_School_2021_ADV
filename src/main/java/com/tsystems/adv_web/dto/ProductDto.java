@@ -6,7 +6,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Singleton
 public class ProductDto {
     private Long id;
 

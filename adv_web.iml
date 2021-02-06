@@ -65,6 +65,7 @@
     <orderEntry type="library" name="Maven: org.jasypt:jasypt:1.9.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.16" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.ejb:ejb-api:3.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.faces:jsf-api:2.0" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.jersey.core:jersey-client:2.29.1" level="project" />
     <orderEntry type="library" name="Maven: jakarta.ws.rs:jakarta.ws.rs-api:2.1.6" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.jersey.core:jersey-common:2.29.1" level="project" />
