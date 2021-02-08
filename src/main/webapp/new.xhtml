@@ -3,21 +3,37 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
-<h:head>
-    <title>JSF 2.0 Hello World</title>
-</h:head>
-<h:body>
-    <h2>JSF 2.0 Hello World Example - hello.xhtml</h2>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:head></h:head>
+<body>
+<h:form>
 
-    <h:dataTable value="#{productsGetter.productsDto.products}" var="product">
-        <h:column>#{product.id}</h:column>
-        <h:column>#{product.name}</h:column>
-        <h:column>#{product.price}</h:column>
-    </h:dataTable>
-</h:body>
+    <p:dataGrid var="product" value="#{productsGetter.bestProducts.products}" columns="3" layout="grid"
+                rows="9" id="products">
+
+        <f:facet name="header">
+            Best holds sets
+        </f:facet>
+
+        <p:panel style="border: none;">
+            <div style="text-align: center;">
+                <h:panelGrid columns="1" style="width:100%;">
+                    <h:outputLink value="http://localhost:8080/customer/products/#{product.id}">
+                        <h:outputText id="name" value="#{product.name}"/>
+                    </h:outputLink>
+                    <h:outputText value=" #{product.price}$"/><br></br>
+                </h:panelGrid>
+            </div>
+        </p:panel>
+
+    </p:dataGrid>
+
+
+
+</h:form>
+
+<f:websocket channel="adv" onmessage="function r(){location.reload();}" />
+</body>
 </html>

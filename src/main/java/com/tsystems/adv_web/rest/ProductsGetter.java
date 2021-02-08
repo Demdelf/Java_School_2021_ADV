@@ -18,7 +18,7 @@ import javax.ejb.Singleton;
 
 @Singleton
 @ManagedBean(name = "productsGetter")
-@RequestScoped
+@SessionScoped
 public class ProductsGetter implements Serializable {
 
     private static final long serialVersionUID = 1L;

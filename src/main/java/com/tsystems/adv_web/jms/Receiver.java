@@ -6,6 +6,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.faces.push.Push;
+import javax.faces.push.PushContext;
 import javax.inject.Inject;
 import javax.jms.JMSException;
 import javax.jms.Queue;
@@ -26,6 +28,11 @@ public class Receiver {
 
     @EJB
     private ProductsGetter productsGetter;
+    @Inject @Push
+    private PushContext adv;
+    public void sendMessage(Object message) {
+        adv.send(message);
+    }
 
     @PostConstruct
     public void receive() {
@@ -55,6 +62,7 @@ public class Receiver {
                 e.printStackTrace();
             }
             productsGetter.getBestProducts();
+            sendMessage(new Object());
         }
     }
 }

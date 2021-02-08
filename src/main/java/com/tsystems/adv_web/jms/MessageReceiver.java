@@ -20,9 +20,9 @@ import org.jboss.annotation.ejb.ResourceAdapter;
         @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge")})
 @ResourceAdapter("activemq-rar-4.1.1.rar")
 public class MessageReceiver implements MessageListener {
-
-    @EJB
-    private ProductsGetter productsGetter;
+//
+//    @EJB
+//    private ProductsGetter productsGetter;
 
     @EJB
     private Receiver receiver;
@@ -36,6 +36,6 @@ public class MessageReceiver implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
-        productsGetter.getBestProducts();
+        receiver.receive();
     }
 }
