@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    JBoss, Home of Professional Open Source
-    Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
-    contributors by the @authors tag. See the copyright.txt in the
-    distribution for a full listing of individual contributors.
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:head>
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
--->
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-   xmlns:ui="http://java.sun.com/jsf/facelets"
-   xmlns:f="http://java.sun.com/jsf/core"
-   xmlns:h="http://java.sun.com/jsf/html"
-   template="/WEB-INF/templates/default.xhtml">
-   <ui:define name="content">
-      <h1>Welcome to Russianholds!</h1>
 
-      <div>
-         <p>You have successfully deployed a Java EE 7 Enterprise Application.</p>
-         <h3>Your application can run on:</h3>
-         <img src="resources/gfx/wildfly_400x130.jpg"/>
-      </div>
+</h:head>
+<body>
+<h:form>
 
-      <h2>Products</h2>
+   <p:dataGrid var="product" value="#{productsGetter.bestProducts.products}" columns="3" layout="grid"
+               rows="9" id="products">
 
-      <h:dataTable value="#{productsGetter.bestProducts.products}" var="product">
-         <h:column>#{product.id}</h:column>
-         <h:column>#{product.name}</h:column>
-         <h:column>#{product.price}</h:column>
-      </h:dataTable>
-   </ui:define>
+      <f:facet name="header">
+         Best holds sets
+      </f:facet>
+
+      <p:panel style="border: none;">
+         <div style="text-align: center;">
+            <h:panelGrid columns="1" style="width:100%;">
+               <h:outputLink value="http://localhost:8080/customer/products/#{product.id}">
+                  <h:outputText id="name" value="#{product.name}"/>
+               </h:outputLink>
+               <h:outputText value=" #{product.price}$"/><br></br>
+               <img src= "data:image/png;base64,${product.stringImage}" alt="" width="460" height="260"/>
+            </h:panelGrid>
+         </div>
+      </p:panel>
+
+   </p:dataGrid>
 
 
 
-</ui:composition>
+</h:form>
+
+<f:websocket channel="adv" onmessage="function r(){location.reload();}" />
+</body>
+</html>
